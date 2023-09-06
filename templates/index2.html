@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JMT Store</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Travello template project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+    <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/about.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/about_responsive.css' %}">
+</head>
+<body>
+<div class="container">
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+
+
+
+
+<!--                        <a class="nav-link" href="#">Home</a>-->
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="departmentDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Department
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="departmentDropdown">
+                            <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Computer_science">Computer Science</a>
+                            <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Commerce">Commerce</a>
+                            <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Electrical_engineering">Electrical Engineering</a>
+                            <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Mechanical_engineering">Mechanical Engineering</a>
+                            <a class="dropdown-item" href="https://en.wikipedia.org/wiki/Chemistry">Chemistry</a>
+
+                        </div>
+                    </li>
+                    {% if user.is_authenticated %}
+					<li> Hello {{user.username}}</li>
+                     <li><a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a></li>
+					{% else %}
+					<li><a href="{% url 'register' %}" class="nav-item nav-link">Register</a></li>
+					<li><a href="{% url 'login' %}" class="nav-item nav-link">Login</a></li>
+					{% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col"><br>
+                <br>
+                <h1 style="text-align:center;color:black;font-family:verdana;";> JMT STORE</h1>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <img src="{% static 'images/news_6.jpg' %}" width="1150px;">
+    </div>
+    <div class="col"><br>
+         <br>
+
+         <p>Welcome to JMT Store! Our school store is your one-stop shop for all your educational needs. We offer a wide range of school supplies, textbooks, uniforms, and branded apparel. Whether you're a student, parent, or teacher, we have everything you need to support your educational journey. Visit us online or in-person to explore our selection and make your school experience even better..</p>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script src="{% static 'js/about.js'%}"></script>
+</div>
+</body>
+</html>

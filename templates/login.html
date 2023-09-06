@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body style="background-color: lavender; text-align: center;">
+    <h2 style="text-align: center;">Login</h2>
+    <form style="text-align: center;" action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Enter username"><br>
+        <div>
+            <input type="password" name="password" placeholder="Enter password"><br>
+        </div>
+        <div>
+            <input type="submit"><br>
+
+        </div>
+
+    </form>
+    <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+</body>
+</html>

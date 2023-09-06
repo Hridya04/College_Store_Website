@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Page</title>
+</head>
+<body style="background-color: lavender; text-align: center;">
+    <h1>Form Page</h1>
+
+<!--    {% if success_message %}-->
+<!--    <div class="success-message">-->
+<!--        {{ success_message }}-->
+<!--    </div>-->
+<!--    {% endif %}-->
+
+
+
+
+
+
+    <form method="post" action="{% url 'form_page' %}">
+        {% csrf_token %}
+
+
+
+        <input type="text" name="name" placeholder="Enter your name"><br>
+        Enter your DOB:<input type="date" name="DOB" placeholder="Enter your DOB"><br>
+        <input type="number" name="age" placeholder="Enter your Age"><br>
+        Select your Gender:<input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Transgender"> Transgender<br>
+
+        <input type="text" name="phonenumber" placeholder="Enter your phonenumber"><br>
+        <input type="email" name="email" placeholder="Enter your Mail ID"><br>
+        <input type="text" name="text" placeholder="Enter your address"><br>
+
+
+                <label for="department">Department:</label>
+        <select id="department" name="department">
+            <option value="commerce">Commerce</option>
+            <option value="science">Science</option>
+            <option value="arts">Arts</option>
+
+        </select><br>
+
+        <label for="course">Courses:</label>
+        <select id="course" name="course">
+            <option value="" disabled selected>Select a Department First</option>
+
+            <optgroup label="Commerce">
+                <option value="BBA">BBA</option>
+                <option value="BCom">BCom</option>
+
+            </optgroup>
+
+            <optgroup label="Science">
+                <option value="BSc">BSc</option>
+                <option value="MSc">MSc</option>
+
+            </optgroup>
+
+            <optgroup label="Arts">
+                <option value="BA">BA</option>
+                <option value="MA">MA</option>
+
+            </optgroup>
+        </select><br>
+
+        <label for="purpose">Purpose:</label>
+        <select id="purpose" name="purpose">
+            <option value="Enquiry">For Enquiry</option>
+            <option value="Place Order">Place Order</option>
+            <option value="Return">Return</option>
+
+        </select><br>
+        Materials Provide: <input type="checkbox" name="Materials Provide" value="Note book">Note book
+        <input type="checkbox" name="Materials Provide" value="Pen">Pen
+        <input type="checkbox" name="Materials Provide" value="Others">Others<br>
+        <button type="submit">Submit</button><br>
+
+<!--        <button onclick="location.href='{% url 'logout' %}'" class="btn btn-secondary">Logout</button>-->
+    </form><br>
+    {% if messages %}
+<div class="alert alert-success">
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+</div>
+{% endif %}
+
+    <p><a href="{% url 'index2' %}">Return to Home Page</a></p>
+
+    <script>
+        const departmentSelect = document.getElementById('department');
+        const courseSelect = document.getElementById('course');
+
+        departmentSelect.addEventListener('change', function () {
+            // Clear previous course options
+            courseSelect.innerHTML = '<option value="" disabled selected>Select a Department First</option>';
+
+            // Define course options based on the selected department
+            const department = departmentSelect.value;
+
+            if (department === 'commerce') {
+                const commerceCourses = ['BBA', 'BCom'];
+                commerceCourses.forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+            } else if (department === 'science') {
+                const scienceCourses = ['BSc', 'MSc'];
+                scienceCourses.forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+            } else if (department === 'arts') {
+                const artsCourses = ['BA', 'MA'];
+                artsCourses.forEach(course => {
+                    const option = document.createElement('option');
+                    option.value = course;
+                    option.textContent = course;
+                    courseSelect.appendChild(option);
+                });
+            }
+        });
+    </script>
+
+<!--{% for msg in messages %}-->
+<!--<h2>{{msg}}</h2>-->
+<!--{% endfor %}-->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
